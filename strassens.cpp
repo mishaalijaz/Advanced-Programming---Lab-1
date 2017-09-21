@@ -1,45 +1,50 @@
-
-   A = [1  3]      B = [6  8]
-       [7  5]          [4  2]
-
-
-// Splitting .
-def a11 = 1
-def a12 = 3
-def a21 = 7
-def a22 = 5
-def b11 = 6
-def b12 = 8
-def b21 = 4
-def b22 = 2
-
-//  "S" matrix.
-def s1 = b12 - b22 // 6
-def s2 = a11 + a12 // 4
-def s3 = a21 + a22 // 12
-def s4 = b21 - b11 // -2
-def s5 = a11 + a22 // 6
-def s6 = b11 + b22 // 8
-def s7 = a12 - a22 // -2
-def s8 = b21 + b22 // 6
-def s9 = a11 - a21 // -6
-def s10 = b11 + b12 // 14
-
-// "P" matrix.
-def p1 = a11 * s1 // 6
-def p2 = s2 * b22 // 8
-def p3 = s3 * b11 // 72
-def p4 = a22 * s4 // -10
-def p5 = s5 * s6 // 48
-def p6 = s7 * s8 // -12
-def p7 = s9 * s10 // -84
-
-// Fill in the resultant "C" matrix.
-def c11 = p5 + p4 - p2 + p6 // 18
-def c12 = p1 + p2 //  14
-def c21 = p3 + p4 // 62
-def c22 = p5 + p1 - p3 - p7 // 66
-
-
-     C = [ 18   14]
-         [ 62   66]
+#include<iostream>
+2	#include<conio.h>
+3	using namespace std;
+4	
+5	void main()
+6	{
+7		int a[2][2], b[2][2], c[2][2];
+8		int m1, m2, m3, m4, m5, m6, m7, i, j;
+9	
+10	
+11		cout << "Enter the elements of 2x2 Matrix 1:\n";
+12		for (i = 0; i<2; i++)
+13		{
+14			for (j = 0; j<2; j++)
+15			{
+16				cin >> a[i][j];
+17			}
+18		}
+19		cout << "Enter the elements of 2x2 Matrix 2:\n";
+20		for (i = 0; i<2; i++)
+21		{
+22			for (j = 0; j<2; j++)
+23			{
+24				cin >> b[i][j];
+25			}
+26		}
+27	
+28		
+29		m1 = (a[0][0] + a[1][1])*(b[0][0] + b[1][1]);
+30		m2 = (a[1][0] + a[1][1])*b[0][0];
+31		m3 = a[0][0] * (b[0][1] - b[1][1]);
+32		m4 = a[1][1] * (b[1][0] - b[0][0]);
+33		m5 = (a[0][0] + a[0][1])*b[1][1];
+34		m6 = (a[1][0] - a[0][0])*(b[0][0] + b[0][1]);
+35		m7 = (a[0][1] - a[1][1])*(b[1][0] + b[1][1]);
+36		c[0][0] = m1 + m4 - m5 + m7;
+37		c[0][1] = m3 + m5;
+38		c[1][0] = m2 + m4;
+39		c[1][1] = m1 - m2 + m3 + m6;
+40		cout << "\nProduct of the matrices is:\n";
+41		for (i = 0; i<2; i++)
+42		{
+43			for (j = 0; j<2; j++)
+44			{
+45				cout << c[i][j];
+46			}
+47			cout << "\n";
+48		}
+49	
+50	}
